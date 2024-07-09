@@ -27,6 +27,10 @@ const student_schema = new mongoose.Schema({
             },
             message: t => `Điểm thi phải nằm trong khoảng từ 0 đến 10`
         }
+    },
+    classroom: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Classroom"
     }
 });
 module.exports = mongoose.model("Student",student_schema);
