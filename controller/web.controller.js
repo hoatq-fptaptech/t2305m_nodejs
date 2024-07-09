@@ -9,3 +9,16 @@ exports.student_get = async function(req,res){
         count : x
     });
 }
+exports.form_new = (req, res) => {
+    res.render('new');
+  };
+
+exports.save_student = async (req, res) => {
+    try {
+      const student = new Student(req.body);
+      await student.save();
+      res.redirect('/');
+    } catch (error) {
+      res.status(400).send(error);
+    }
+  }  
