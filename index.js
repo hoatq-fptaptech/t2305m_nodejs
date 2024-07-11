@@ -16,5 +16,7 @@ require("./model/database");
 const webrouter = require("./routes/web.route");
 app.use("/",webrouter);
 
-//
+//routes classroom 
+const classroom_router = require("./routes/classroom.route");
+app.use("/classroom",classroom_router);
 //

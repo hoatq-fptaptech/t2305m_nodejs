@@ -1,7 +1,8 @@
 const Student = require("./../model/student.model");
+const Classroom = require("./../model/classroom.model");
 exports.student_get = async function(req,res){  
     // query
-    let list = await Student.find();
+    let list = await Student.find().populate("classroom").exec();
     // res.sendFile(__dirname+"/views/home.html");
     let x =0;
     res.render("home",{
@@ -9,8 +10,11 @@ exports.student_get = async function(req,res){
         count : x
     });
 }
-exports.form_new = (req, res) => {
-    res.render('new');
+exports.form_new = async (req, res) => {
+    const classes = await Classroom.find();
+    res.render('new',{
+      classes: classes
+    });
   };
 
 exports.save_student = async (req, res) => {
