@@ -19,4 +19,6 @@ app.use("/",webrouter);
 //routes classroom 
 const classroom_router = require("./routes/classroom.route");
 app.use("/classroom",classroom_router);
-//
+//authentication
+const user_router = require("./routes/user.route");
+app.use("/auth",user_router);
