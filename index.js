@@ -22,3 +22,17 @@ app.use("/classroom",classroom_router);
 //authentication
 const user_router = require("./routes/user.route");
 app.use("/auth",user_router);
+
+// config session
+const session = require("express-session");
+app.use(
+    session({
+        resave: true,
+        saveUninitialized: true,
+        secret: "t2305mabcxyzklm13434",
+        cookie: {
+            maxAge: 360000,// miliseconds,
+            secure: false // true : ssl
+        }
+    })
+)
